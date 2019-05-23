@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Lets get fooked up man</h2>
+
+  <% @cocktails.each do |ct| %>
+    <div class="card text-center">
+      <%= link_to ct.name, cocktail_path(ct.id)  %>
+    </div>
+  <% end %>
+</div>
+

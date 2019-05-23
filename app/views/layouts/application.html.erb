@@ -12,6 +12,19 @@
   </head>
 
   <body>
+    <nav class="navbar-fixed-top§ navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to ("<i class='fas fa-wine'></i> GetWasted.com").html_safe, cocktails_path, class: 'navbar-brand' %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'Add new Cocktail', new_cocktail_path, class: 'nav-link' %>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   <%= javascript_pack_tag "application" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

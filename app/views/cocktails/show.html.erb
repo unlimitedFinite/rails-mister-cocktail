@@ -1,0 +1,22 @@
+<div class="container">
+  <h1><%= @cocktail.name %> _id = <%= @cocktail.id  %></h1>
+  <div class="row">
+    <div class="col-6">
+      <h5>Ingredients</h5>
+      <% @cocktail.doses.each do |d| %>
+        <p><%= d.ingredient.name%></p>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <h5>Doses</h5>
+      <% @cocktail.doses.each do |d| %>
+        <p><%= d.description %>
+
+        <%= link_to ("<i class='fas fa-dumpster-fire'></i>").html_safe, dose_path(d), method: :delete  %>
+
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "New Dose", new_cocktail_dose_path(@cocktail.id)  %>
+</div>
