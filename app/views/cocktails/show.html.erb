@@ -1,22 +1,57 @@
-<div class="container">
-  <h1><%= @cocktail.name %> _id = <%= @cocktail.id  %></h1>
-  <div class="row">
-    <div class="col-6">
-      <h5>Ingredients</h5>
-      <% @cocktail.doses.each do |d| %>
-        <p><%= d.ingredient.name%></p>
-      <% end %>
-    </div>
-    <div class="col-6">
-      <h5>Doses</h5>
-      <% @cocktail.doses.each do |d| %>
-        <p><%= d.description %>
-
-        <%= link_to ("<i class='fas fa-dumpster-fire'></i>").html_safe, dose_path(d), method: :delete  %>
-
-        </p>
-      <% end %>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add to Cocktail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@cocktail, @dose] do |f| %>
+          <%= f.input :description, label: 'Amount (ml)' %>
+          <%= f.association :ingredient %>
+          <%= f.button :submit, 'Submit', class: 'w-100 btn-ingredient' %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <%= link_to "New Dose", new_cocktail_dose_path(@cocktail.id)  %>
+</div>
+
+
+<div class="banner">
+  <h1><%= @cocktail.name %></h1>
+</div>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-6 col-lg-8">
+      <div class="title d-flex justify-content-between">
+        <h5>Description</h5>
+        <span class="icons">
+          <i class="far fa-edit"></i>
+          <i class='fas fa-trash'></i>
+        </span>
+       </div>
+       <p>
+        <%= @cocktail.description %>
+      </p>
+      <%#= link_to "Edit", new_cocktail_dose_path(@cocktail.id), class: 'btn btn-dark'  %>
+      <%#= link_to "Delete", new_cocktail_dose_path(@cocktail.id), class: 'btn btn-dark'  %>
+    </div>
+    <div class="col-6 col-lg-4 text-right">
+      <h5>Ingredients</h5>
+      <% @cocktail.doses.each do |d| %>
+        <p>
+          <%= d.ingredient.name%> -
+          <%= d.description %> |
+          <%= link_to ("<i class='fas fa-trash'></i>").html_safe, dose_path(d), method: :delete  %>
+        </p>
+      <% end %>
+      <button type="button" class="btn btn-ingredient" data-toggle="modal" data-target="#exampleModalCenter">
+      Add Ingredient
+      </button>
+      <%#= link_to "Add an Ingredient", new_cocktail_dose_path(@cocktail.id), class: 'btn btn-dark'  %>
+    </div>
+  </div>
+
 </div>

@@ -9,7 +9,10 @@
 puts 'Filling database with cocktails'
 
 20.times do
-  Cocktail.create(name: Faker::Beer.hop)
+  Cocktail.create(
+    name: Faker::Beer.hop,
+    description: Faker::Lorem.paragraphs(12)
+  )
 end
 
 puts 'Filling database with ingredients'
@@ -22,7 +25,7 @@ puts 'Filling database with doses'
 
 50.times do
   Dose.create(
-    description: rand(0..25).to_s + ' ' + Faker::Food.metric_measurement,
+    description: rand(1..25).to_s + ' ml',
     ingredient: Ingredient.all.sample,
     cocktail: Cocktail.all.sample
   )

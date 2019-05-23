@@ -1,3 +1,61 @@
 // Place all the styles related to the Cocktails controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com
+
+// font-family: 'Lobster', cursive;
+// font-family: 'Special Elite', cursive;
+// font-family: 'Fauna One', serif;
+.container {
+
+}
+
+
+.banner {
+  background-image: -webkit-linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url(cocktail.jpg);
+  background-image: -o-linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url(cocktail.jpg);
+  background-image: linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url(cocktail.jpg);
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-right: 29%;
+}
+
+h5 {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.5em;
+  margin-bottom: 16px;
+}
+
+.icons {
+  font-size: 1.5em;
+}
+
+.banner h1 {
+  color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-family: 'Lobster', cursive;
+  font-size: 3em;
+}
+
+.fa-trash {
+  color: #631d0f;
+}
+
+.btn-ingredient {
+  background-color: #754a4a9c;
+  border-radius: 5px;
+}
+
+body {
+  font-family: 'Fauna One', serif;
+  font-size: 14px;
+}
+
+.navbar-brand {
+  font-family: 'Special Elite', cursive;
+}
