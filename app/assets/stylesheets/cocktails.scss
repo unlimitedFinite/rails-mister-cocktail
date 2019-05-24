@@ -1,23 +1,44 @@
-// Place all the styles related to the Cocktails controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com
+body {
+  font-family: 'Fauna One', serif;
+  font-size: 14px;
+  background-color:black;
+}
+.banner-index h1 {
+  color: #ffffff;
+  justify-content: center;
+  align-items: flex-end;
+  display: flex;
+  font-family: 'Special Elite';
+  font-size: 3.5em;
+}
 
-// font-family: 'Lobster', cursive;
-// font-family: 'Special Elite', cursive;
-// font-family: 'Fauna One', serif;
-.container {
-
+.banner-index h2 {
+  color: #ffffffb0;
+  justify-content: center;
+  font-family: 'Lobster', cursive;
+  font-size: 1.8em;
+  padding: 15px;
 }
 
 .banner-index {
   background-image: linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/deyw9z6tu/image/upload/v1558686619/Epicurean-Bar_iakm63.jpg');
-  height: 400px;
+  height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  display: flex;
+  display: grid;
   justify-content: center;
-  padding-right: 29%;
+}
+
+.card img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.card {
+  width: 10rem;
+  border: 1px solid black;
+  box-shadow: 4px 4px #ffffff61;
+  border-radius: 15px;
 }
 
 
@@ -62,10 +83,7 @@ h5 {
   border-radius: 5px;
 }
 
-body {
-  font-family: 'Fauna One', serif;
-  font-size: 14px;
-}
+
 
 .navbar-brand {
   font-family: 'Special Elite', cursive;

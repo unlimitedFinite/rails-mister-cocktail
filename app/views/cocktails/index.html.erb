@@ -30,6 +30,7 @@
 </div>
 
 <div class="banner-index">
+  <h1>Lets-Get-Wasted!</h1>
   <h2 class="index-title">Browse our user submitted cocktails or submit your own!</h2>
 </div>
 <div class="container">
@@ -39,7 +40,6 @@
         <%= cl_image_tag( ct.photo , :height => 200) %>
         <div class="card-body">
           <h5><%= link_to ct.name, cocktail_path(ct.name.downcase.parameterize)  %></h5>
-          <p><%= truncate(ct.description, :length => 100) %></p>
         </div>
       </div>
     <%  %>

@@ -1,5 +1,11 @@
+# # TO DO :
+# Make all data that goes into database be parameterized
+
+
 require 'json'
 require 'open-uri'
+
+start_time = Time.now
 
 puts 'Spilling cocktails...'
 Cocktail.destroy_all
@@ -9,20 +15,23 @@ puts 'Deleting dose information...'
 Dose.destroy_all
 puts "OK... Filling database with cocktails"
 
-amount = 30
+
 # fetching cocktail seeds
 querys = []
 all_url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
 json = open(all_url).read
 data = JSON.parse(json)
+amount = data['drinks'].length
 counter = 0
 amount.times do
-  querys << data['drinks'][counter]['strDrink']
+  q = data['drinks'][counter]['strDrink']
+  querys << q unless q.include? 'Empell'
   counter += 1
 end
 
 puts "Please be patient"
 # creating cocktails
+query_count = 1
 querys.each do |query|
   url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   search = url + query
@@ -34,6 +43,8 @@ querys.each do |query|
   )
   cocktail.remote_photo_url = data['drinks'][0]['strDrinkThumb']
   cocktail.save
+  query_count += 1
+  puts "Cocktail number [#{query_count} of #{querys.length}] has been added...."
 end
 
 # creating ingredients
@@ -61,3 +72,6 @@ Cocktail.all.each do |cocktail|
     count += 1
   end
 end
+
+time_taken = Time.now - start_time
+puts "Only took #{time_taken / 60} mins.. Wow so fast!"
