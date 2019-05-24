@@ -1,9 +1,38 @@
-<div class="banner-index">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add to Cocktail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% if @cocktail.errors.any? %>
+         <div class="errors-container">
+           <ul>
+             <% @cocktail.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+             <% end %>
+           </ul>
+         </div>
+        <% end %>
+        <%= simple_form_for @cocktail do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
   </div>
+</div>
+
+<div class="banner-index">
+  <h2 class="index-title">Browse our user submitted cocktails or submit your own!</h2>
+</div>
 <div class="container">
-
-
-  <h2 class="jumbotron text-center">Browse our user submitted cocktails or submit your own!</h2>
   <div class="row justify-content-center">
     <% @cocktails.each do |ct| %>
       <div class="card m-2" style="width: 18rem;">

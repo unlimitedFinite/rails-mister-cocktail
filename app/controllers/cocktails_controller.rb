@@ -3,6 +3,7 @@ class CocktailsController < ApplicationController
   before_action :set_cocktail, only: [:show]
 
   def index
+    @cocktail = Cocktail.new
   end
 
   def show
