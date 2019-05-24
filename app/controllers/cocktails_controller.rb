@@ -15,8 +15,11 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = Cocktail.new(cocktail_params)
-    @cocktail.save
-    redirect_to cocktail_path(@cocktail.id)
+    if @cocktail.save
+      redirect_to cocktail_path(@cocktail.id)
+    else
+      render :new
+    end
   end
 
   private
@@ -26,10 +29,10 @@ class CocktailsController < ApplicationController
   end
 
   def set_cocktail
-    @cocktail = Cocktail.find(params[:id])
+    @cocktail = Cocktail.find_by(name: params[:name].split('-').join(' ').titleize)
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :description, :photo)
   end
 end

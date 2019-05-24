@@ -1,8 +1,19 @@
 <div class="container">
   <h1>New Cocktail</h1>
-
+  <% if @cocktail.errors.any? %>
+   <div class="errors-container">
+     <ul>
+       <% @cocktail.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+     </ul>
+   </div>
+  <% end %>
   <%= simple_form_for @cocktail do |f| %>
     <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.button :submit %>
   <% end %>
 </div>

@@ -10,10 +10,11 @@
 }
 
 
+
 .banner {
-  background-image: -webkit-linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url(cocktail.jpg);
-  background-image: -o-linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url(cocktail.jpg);
-  background-image: linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url(cocktail.jpg);
+  background-image: -webkit-linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/deyw9z6tu/image/upload/v1558668973/cocktail1_lgqzob.jpg');
+  background-image: -o-linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/deyw9z6tu/image/upload/v1558668973/cocktail1_lgqzob.jpg');
+  background-image: linear-gradient(rgba(13, -11, 18, 0.3), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/deyw9z6tu/image/upload/v1558668973/cocktail1_lgqzob.jpg');
   height: 300px;
   background-repeat: no-repeat;
   background-size: cover;
