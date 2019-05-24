@@ -43,7 +43,7 @@
       <% @cocktail.doses.each do |d| %>
         <p>
           <%= d.ingredient.name%> -
-          <%= d.description %> |
+          <%= d.description %>
           <%= link_to ("<i class='fas fa-trash'></i>").html_safe, dose_path(d), method: :delete  %>
         </p>
       <% end %>
