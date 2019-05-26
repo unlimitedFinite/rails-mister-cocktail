@@ -31,19 +31,22 @@
 
 <div class="banner-index">
   <h1>Lets-Get-Wasted!</h1>
-  <h2 class="index-title">Browse our user submitted cocktails or submit your own!</h2>
+  <h2 class="index-title">Browse our cocktails and submit your own!</h2>
 </div>
+
 <div class="container">
   <div class="row justify-content-center">
     <% @cocktails.each do |ct| %>
-      <div class="card m-2" style="width: 18rem;">
-        <%= cl_image_tag( ct.photo , :height => 200) %>
-        <div class="card-body">
-          <h5><%= link_to ct.name, cocktail_path(ct.name.downcase.parameterize)  %></h5>
+      <%= link_to cocktail_path(ct.slug_name) do  %>
+        <div class="card m-2" style="background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5)), url(<%= cl_image_path  ct.photo, :height => 250, crop: :fill %>);">
+          <div class="card-body">
+            <h5><%= ct.name %></h5>
+          </div>
         </div>
-      </div>
+        <% end %>
     <%  %>
-  <% end %>
+    <% end %>
   </div>
 </div>
+
 

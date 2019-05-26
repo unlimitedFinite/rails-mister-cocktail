@@ -15,7 +15,6 @@ puts 'Deleting dose information...'
 Dose.destroy_all
 puts "OK... Filling database with cocktails"
 
-
 # fetching cocktail seeds
 querys = []
 all_url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail'
@@ -23,15 +22,16 @@ json = open(all_url).read
 data = JSON.parse(json)
 amount = data['drinks'].length
 counter = 0
-amount.times do
+10.times do
   q = data['drinks'][counter]['strDrink']
   querys << q unless q.include? 'Empell'
   counter += 1
 end
 
 puts "Please be patient"
+
 # creating cocktails
-query_count = 1
+query_count = 0
 querys.each do |query|
   url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   search = url + query
@@ -39,6 +39,7 @@ querys.each do |query|
   data = JSON.parse(json)
   cocktail = Cocktail.new(
     name: data['drinks'][0]['strDrink'],
+    slug_name: data['drinks'][0]['strDrink'].downcase.parameterize,
     description: data['drinks'][0]['strInstructions']
   )
   cocktail.remote_photo_url = data['drinks'][0]['strDrinkThumb']

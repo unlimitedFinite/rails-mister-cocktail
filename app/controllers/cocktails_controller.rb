@@ -30,7 +30,7 @@ class CocktailsController < ApplicationController
   end
 
   def set_cocktail
-    @cocktail = Cocktail.find_by(name: params[:name].split('-').join(' ').titleize)
+    @cocktail = Cocktail.find_by(slug_name: params[:name])
   end
 
   def cocktail_params
