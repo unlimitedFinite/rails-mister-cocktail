@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     resources :doses, only: [:new, :create]
   end
   resources :doses, only: [:destroy]
-  get 'cocktails/:name', to: 'cocktails#show', as: :cocktail
+  get 'cocktails/:slug_name', to: 'cocktails#show', as: :cocktail
 end

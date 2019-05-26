@@ -16,8 +16,9 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = Cocktail.new(cocktail_params)
+    @cocktail[:slug_name] = @cocktail.name.downcase.parameterize
     if @cocktail.save
-      redirect_to cocktail_path(@cocktail.id)
+      redirect_to cocktail_path(@cocktail[:slug_name])
     else
       render :new
     end
@@ -30,7 +31,7 @@ class CocktailsController < ApplicationController
   end
 
   def set_cocktail
-    @cocktail = Cocktail.find_by(slug_name: params[:name])
+    @cocktail = Cocktail.find_by(slug_name: params[:slug_name])
   end
 
   def cocktail_params
